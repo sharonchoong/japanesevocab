@@ -5,7 +5,7 @@ let userLevel = 0;
 
 export async function getVocabList() {
   if (vocabList.length === 0) {
-    const text = await (await fetch("/data/vocab.csv")).text();
+    const text = await (await fetch("data/vocab.csv")).text();
     const data = text.split("\r\n").map((t) => t.split("\t"));
     const headers = data[0];
     for (let i = 1; i < data.length; i++) {
@@ -133,7 +133,6 @@ export async function getUserPercentComplete() {
       }
     }
   }
-  console.log(userLevel);
   return { percentComplete, userLevel };
 }
 
