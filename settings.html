@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Japanese vocabulary quiz</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="/css/settings.css" />
+  </head>
+  <body>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Japanese vocabulary quiz</li>
+          <li><a href="index.html">The quiz</a></li>
+          <li><a href="#">Settings</a></li>
+          <li class="points" style="display: none;">
+            <span id="completeCounter" class="label secondary">0% complete</span><span id="userLevel" class="label primary">Level 0</span>
+        </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout primary">
+      <div class="grid-container text-center">
+        <h1>Quiz settings</h1>
+      </div>
+    </div>
+
+    <div class="grid-container section">
+      <div>
+        <h5>Consecutive correct answers needed to reach learning goal</h5>
+        <div>
+          <div class="grid-x">
+            <input
+              class="cell medium-6 large-4"
+              type="text"
+              id="searchVocab"
+              placeholder="Search vocabulary"
+            />
+          </div>
+
+          <div class="vocabTable">
+            <table id="vocabTable" class="stack">
+              <thead class="vocabHeader">
+                <tr>
+                  <th width="100">Japanese</th>
+                  <th width="150">English</th>
+                  <th width="100">Level</th>
+                  <th width="100">Set</th>
+                  <th>
+                    Correct answers goal
+                    <div>
+                      <small>Min threshold to be considered complete</small>
+                    </div>
+                  </th>
+                  <th>Consecutive correct answers made</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <nav aria-label="Pagination">
+            <ul class="pagination">
+              <li class="pagination-text">Showing page 1 of 10 pages</li>
+              <li class="pagination-previous">
+                <a class="disabled" href="#" aria-label="Next page"
+                  >Previous <span class="show-for-sr">page</span></a
+                >
+              </li>
+              <li class="pagination-next">
+                <a href="#" aria-label="Next page"
+                  >Next <span class="show-for-sr">page</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <div class="grid-x align-middle">
+            <b class="cell medium-5"
+              >Reset correct answers for 10 random words at</b
+            >
+            <select id="resetLevel" class="cell medium-4">
+              <option value="any">any level</option>
+              <option value="1">level 1</option>
+              <option value="2">level 2</option>
+              <option value="3">level 3</option>
+              <option value="4">level 4</option>
+              <option value="5">level 5</option>
+              <option value="6">level 6</option>
+              <option value="7">level 7</option>
+              <option value="8">level 8</option>
+              <option value="9">level 9</option>
+              <option value="10">level 10</option>
+            </select>
+            <button id="reset10" class="cell medium-3 button alert">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container section">
+      <div>
+        <h5>Request to add a new word to the vocabulary list</h5>
+        <div>
+          Send me a message to request a new word or suggest something to
+          improve!
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container section">
+      <h5>Vocabulary list courtesy of:</h5>
+      <div>
+        <a
+          href="https://www.reddit.com/r/LearnJapanese/comments/s2iop/heres_a_spreadsheet_of_the_6000_most_common/"
+          >Core 6k</a
+        >
+      </div>
+      <div>
+        <a
+          href="https://community.wanikani.com/t/core-10k-non-wk-sort-by-frequency-spreadsheet/17983"
+          >Core 10k</a
+        >
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://unpkg.com/wanakana"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script src="css/foundation.js"></script>
+    <script src="js/settings.js" type="module"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

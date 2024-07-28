@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Japanese vocabulary quiz</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+  </head>
+  <body>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Japanese vocabulary quiz</li>
+          <li><a href="#">The quiz</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li class="points" style="display: none;">
+            <span id="completeCounter" class="label secondary">0% complete</span><span id="userLevel" class="label primary">Level 0</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout primary">
+      <div class="grid-container text-center">
+        <h1>Vocabulary quiz</h1>
+        <div class="grid-x align-center">
+          <div
+            class="cell mobile-app-toggle medium-8 large-5"
+            data-mobile-app-toggle
+          >
+            <button class="mode jap-eng button is-active">Japanese to English</button>
+            <button class="mode eng-jap button">English to Japanese</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mcq" style="display: none" class="grid-container text-center">
+      <h3 id="mondai">Question here</h3>
+      <div class="grid-x align-center">
+        <div class="grid-y cell medium-6 large-4">
+          <button class="kotae button">Answer 1</button>
+          <button class="kotae button">Answer 2</button>
+          <button class="kotae button">Answer 3</button>
+          <button class="kotae button">Answer 4</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="result" style="display: none" class="grid-container text-center">
+      <h3 id="answer" class="correct"><span id="answerWord">word</span>   <span id="correctIcon">&check;</span><span id="incorrectIcon">&cross;</span></h3>
+      <div class="grid-x align-center align-middle">
+        <h5 id="hiragana">hiragana</h5>
+        <a id="more" target="_blank" class="clear button small" href="#">&#9432;</a>
+      </div>
+      
+      <h5 id="meaning">meaning</h5>
+      <div class="card">
+        <div class="card-section">
+          <div class="grid-x align-center align-middle">
+            <h5 id="sentence">sentence</h5>
+            <a id="moreSentence" target="_blank" class="clear button small" href="#">&#9432;</a>
+          </div>
+          <p id="sentenceMeaning">meaning</p>
+          <div class="button hollow tiny"><input id="showFurigana" type="checkbox"/><label class="small" for="showFurigana">Show Furigana</label></div>
+        </div>
+      </div>
+      <div class="grid-x align-center">
+        <div class="grid-y cell medium-6 large-4">
+          <button class="mode button">Next question</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script src="css/foundation.js"></script>
+    <script src="js/index.js" type="module"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

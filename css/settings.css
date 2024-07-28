@@ -1,0 +1,30 @@
+body,
+html {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.25em;
+    letter-spacing: 0.025em;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.vocabTable {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.section {
+    margin-bottom: 50px;
+}
+
+.vocabHeader {
+    position: sticky;
+    top: -1px;
+    bottom: 0;
+    z-index: 100;
+}
+
+.pagination-text {
+    padding-top: 10px;
+    padding-right: 10px;
+}
