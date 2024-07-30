@@ -7,12 +7,15 @@ async function askQuestion() {
 
   const question = answers.find((a) => a.correct).word;
   const japToEng = $(".jap-eng").hasClass("is-active");
-  $("#mondai").text(japToEng ? question.word : question.meaningAll);
+  $("#mondai").html(japToEng ? `<ruby>${question.word}<rp>(</rp><rt>${question.hiragana}</rt><rp>)</rp></ruby>` : question.meaningAll);
   $(".kotae").each(function (i, e) {
     const kotae = answers[i].word;
-    $(e).text(japToEng ? kotae.meaningAll : kotae.word);
+    $(e).html(japToEng ? kotae.meaningAll : `<ruby>${kotae.word}<rp>(</rp><rt>${kotae.hiragana}</rt><rp>)</rp></ruby>`);
     $(e).data("correct", String(answers[i].correct));
   });
+
+  $("rt, rp").hide();
+  $("#showFuriganaMCQ").prop("checked", false);
 
   $("#mcq").show();
   $("#result").hide();
@@ -78,8 +81,8 @@ $(".kotae").on("click", async function (e) {
   $("rt, rp").hide();
 });
 
-$("#showFurigana").on("click", function () {
-  if ($("#showFurigana").is(":checked")) {
+$("#showFurigana, #showFuriganaMCQ").on("click", function (e) {
+  if ($(e.target).is(":checked")) {
     $("rt, rp").show();
   } else {
     $("rt, rp").hide();

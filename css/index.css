@@ -16,6 +16,14 @@ html {
     color: red;
 }
 
+label.button {
+    padding-bottom: 0;
+}
+
+.container {
+    margin-top: 20px;
+}
+
 @media (max-width: 640px) {
     .floatingchat-container-wrap {
       display: none;
