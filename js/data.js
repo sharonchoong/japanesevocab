@@ -8,14 +8,17 @@ export async function getVocabList() {
     const text = await (await fetch("data/vocab.csv")).text();
     const data = text.split(/\r\n|\r|\n/).map((t) => t.split("\t"));
     const headers = data[0];
-    for (let i = 1; i < data.length; i++) {
-      const item = {};
-      for (let j = 0; j < headers.length; j++) {
-        item[headers[j].replace(" ", "")] = data[i][j];
+    if (vocabList.length === 0) {
+      // if vocabList wasn't asynchronously already filled
+      for (let i = 1; i < data.length; i++) {
+        const item = {};
+        for (let j = 0; j < headers.length; j++) {
+          item[headers[j].replace(" ", "")] = data[i][j];
+        }
+        vocabList.push(item);
       }
-      vocabList.push(item);
+      vocabList.sort((a, b) => a.index - b.index);
     }
-    vocabList.sort((a, b) => a.index - b.index);
   }
   return vocabList;
 }
@@ -49,7 +52,7 @@ export function getMinCorrectAnswerThreshold(word) {
 }
 
 export async function getRandomQuestion() {
-  const universe = 100;
+  const universe = 500;
   const randomNumber = Math.random();
   const list = await getVocabList();
   let answers = [];
