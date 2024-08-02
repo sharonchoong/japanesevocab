@@ -52,7 +52,7 @@ export function getMinCorrectAnswerThreshold(word) {
 }
 
 export async function getRandomQuestion() {
-  const universe = 500;
+  const universe = 200;
   const randomNumber = Math.random();
   const list = await getVocabList();
   let answers = [];
