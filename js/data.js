@@ -131,7 +131,7 @@ export async function getUserPercentComplete() {
       const threshold = getMinCorrectAnswerThreshold(word);
       percentComplete += Math.min(1, nCorrectAnswer / threshold / list.length);
 
-      if (await wordIsDone(word)) {
+      if (await wordIsDone(word, nCorrectAnswer, threshold)) {
         updateUserLevel(word.level, list.length);
       }
     }
@@ -157,9 +157,10 @@ export async function updateUserLevel(wordLevel, listLength) {
   userLevel += (Number(wordLevel) / listLength) * 100;
 }
 
-export async function wordIsDone(word) {
-  const nCorrectAnswer = getCorrectAnswerCount(word);
+export async function wordIsDone(word, nCorrectAnswer, threshold) {
+  nCorrectAnswer = nCorrectAnswer || getCorrectAnswerCount(word);
+  threshold = threshold || getMinCorrectAnswerThreshold(word);
 
-  const isWordDone = nCorrectAnswer >= getMinCorrectAnswerThreshold(word);
+  const isWordDone = nCorrectAnswer >= threshold;
   return isWordDone;
 }

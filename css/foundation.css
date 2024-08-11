@@ -26,3 +26,7 @@
   background: #1779ba;
   color: #fefefe;
 }
+
+a > span.label {
+  cursor: pointer;
+}

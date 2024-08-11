@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Japanese vocabulary quiz</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/foundation.css" />
+  </head>
+  <body>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Japanese vocabulary quiz</li>
+          <li><a href="index.html">The quiz</a></li>
+          <li><a href="settings.html">Settings</a></li>
+          <li class="points" style="display: none;">
+            <a href="#">
+              <span id="completeCounter" class="label secondary">0% complete</span>
+              <span id="userLevel" class="label primary">Level 0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout primary">
+        <div class="grid-container text-center">
+          <h1>Learning progress</h1>
+        </div>
+      </div>
+
+    <div class="grid-container section">
+        <div>
+          <h5>By word index</h5>
+          <div>
+            <table id="byIndexTable" class="stack">
+                <thead>
+                  <tr>
+                    <th width="200">Index range</th>
+                    <th width="100">% progress</th>
+                    <th width="100">% words completed</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+          </div>
+        </div>
+
+        <div>
+            <h5>By level</h5>
+            <div>
+              <table id="byLevelTable" class="stack">
+                  <thead>
+                    <tr>
+                        <th width="200">Level</th>
+                        <th width="100">% progress</th>
+                        <th width="100">% words completed</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+            </div>
+          </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script src="css/foundation.js"></script>
+    <script src="js/points.js" type="module"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
