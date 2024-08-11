@@ -13,10 +13,6 @@ html {
     overflow-y: auto;
 }
 
-.section {
-    margin-bottom: 50px;
-}
-
 .vocabHeader {
     position: sticky;
     top: -1px;

@@ -30,3 +30,7 @@
 a > span.label {
   cursor: pointer;
 }
+
+.section {
+  margin-bottom: 50px;
+}
