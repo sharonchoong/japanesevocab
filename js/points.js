@@ -43,19 +43,23 @@ async function fillTables() {
     }
   }
 
+  let indexTableRows = "";
   for (const indexRange in indexRanges) {
-    $("#byIndexTable tbody").append(`<tr>
+    indexTableRows += `<tr>
         <td><span class="hide-for-large">Index range: </span>${indexRange}</td>
         <td><span class="hide-for-large">Progress to goal: </span>${Math.round(indexRanges[indexRange].nCorrect / indexRanges[indexRange].totalCorrectNeeded * 1000) / 10}%</td>
-        <td><span class="hide-for-large">Words completed: </span>${Math.round(indexRanges[indexRange].wordsDone / indexRanges[indexRange].totalWords * 1000) / 10}%</td></tr>`);
+        <td><span class="hide-for-large">Words completed: </span>${indexRanges[indexRange].wordsDone} of ${indexRanges[indexRange].totalWords}</td></tr>`;
   }
+  $("#byIndexTable tbody").html(indexTableRows);
 
+  let levelTableRows = "";
   for (const level in levels) {
-    $("#byLevelTable tbody").append(`<tr>
+    levelTableRows += `<tr>
         <td><span class="hide-for-large">Level </span>${level}</td>
         <td><span class="hide-for-large">Progress to goal: </span>${Math.round(levels[level].nCorrect / levels[level].totalCorrectNeeded * 1000) / 10}%</td>
-        <td><span class="hide-for-large">Words completed: </span>${Math.round(levels[level].wordsDone / levels[level].totalWords * 1000) / 10}%</td></tr>`);
+        <td><span class="hide-for-large">Words completed: </span>${levels[level].wordsDone} of ${levels[level].totalWords}</td></tr>`;
   }
+  $("#byLevelTable tbody").html(levelTableRows);
 }
 
 initSettings();
