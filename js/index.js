@@ -53,7 +53,7 @@ $(".kotae").on("click", async function (e) {
   $("#showFurigana").parent().hide();
   $("#sentence").html(
     correctAnswer.sentence?.replace(
-      /([一-龠]+)\[(.*?)\]/g,
+      /([⺀-⺙⺛-⻳⼀-⿕々〇〡-〩〸-〻㐀-䶵一-鿕豈-舘並-龎]+)\[(.*?)\]/g,
       (match, kanji, hiragana) => {
         $("#showFurigana").parent().show();
         $("#showFurigana").prop("checked", false);
