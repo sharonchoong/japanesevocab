@@ -43,6 +43,9 @@ $(".kotae").on("click", async function (e) {
     .removeClass(isCorrect ? "incorrect" : "correct");
 
   const correctAnswer = answers.find((a) => a.correct).word;
+  const nCorrectAnswer = data.getCorrectAnswerCount(correctAnswer) + (isCorrect ? 1: 0);
+  const threshold = data.getMinCorrectAnswerThreshold(correctAnswer);
+  $("#correctCount").text(`${nCorrectAnswer} of ${threshold}`);
   $("#answerWord").text(correctAnswer.word);
   $("#more").prop(
     "href",
