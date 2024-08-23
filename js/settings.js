@@ -10,7 +10,9 @@ async function initSettings() {
 
 async function setPercentComplete() {
   const { percentComplete, userLevel } = await data.getUserPercentComplete();
-  $("#completeCounter").text(`${Math.round(percentComplete * 10000) / 100}% complete`);
+  $("#completeCounter").text(
+    `${Math.round(percentComplete * 10000) / 100}% complete`
+  );
   $("#userLevel").text(`Level ${Math.ceil(userLevel)}`);
   $(".points").show();
 }
@@ -38,29 +40,46 @@ async function setPaginatedResults(number) {
 
   totalPages = Math.ceil(list.length / nItemsPerPage);
 
-  for (const word of list.slice(
-    (number - 1) * nItemsPerPage,
-    number * nItemsPerPage
-  )) {
+  const showIncompleteOnly = $("#incompleteOnly").is(":checked");
+
+  let filteredIndex = 0;
+  let priorIndex = 0;
+  for (let i = 0; i < list.length; i++) {
+    const word = list[i];
+
+    if (filteredIndex >= number * nItemsPerPage) {
+      break;
+    }
+
     const nCorrectAns = data.getCorrectAnswerCount(word);
-    rows += `<tr>
-            <td><ruby>${word.word}<rp>(</rp><rt>${
-      word.hiragana
-    }</rt><rp>)</rp></ruby></td>
-            <td>${word.meaning}</td>
-            <td>Level ${word.level}</td>
-            <td>Set ${word.set}</td>
-            <td class="large-text-center"><span class="hide-for-large">Correct answer goal: </span>${data.getMinCorrectAnswerThreshold(
-              word
-            )}</td>
-            <td class="large-text-center">
-                <span class="hide-for-large">Consecutive correct answers made: </span>
-                ${nCorrectAns}
-                <button class="clear button alert reset ${
-                  nCorrectAns === 0 ? "disabled" : ""
-                }" data-id="${data.getIdFromWord(word)}">Reset</button>
-            </td>
-            </tr>`;
+    const minThreshold = data.getMinCorrectAnswerThreshold(word);
+    if (
+      !showIncompleteOnly ||
+      (showIncompleteOnly && nCorrectAns < minThreshold)
+    ) {
+      filteredIndex += 1;
+    }
+
+    if (filteredIndex >= ((number - 1) * nItemsPerPage + 1) && priorIndex !== filteredIndex) {
+      rows += `<tr>
+          <td><ruby>${word.word}<rp>(</rp><rt>${
+        word.hiragana
+      }</rt><rp>)</rp></ruby></td>
+          <td>${word.meaning}</td>
+          <td>Index ${word.index}</td>
+          <td>Level ${word.level}</td>
+          <td>Set ${word.set}</td>
+          <td class="large-text-center"><span class="hide-for-large">Correct answer goal: </span>${minThreshold}</td>
+          <td class="large-text-center">
+              <span class="hide-for-large">Consecutive correct answers made: </span>
+              ${nCorrectAns}
+              <button class="clear button alert reset ${
+                nCorrectAns === 0 ? "disabled" : ""
+              }" data-id="${data.getIdFromWord(word)}">Reset</button>
+          </td>
+          </tr>`;
+      priorIndex = filteredIndex;
+    }
   }
   $("#vocabTable tbody").empty();
   $("#vocabTable tbody").append(rows);
@@ -119,4 +138,8 @@ $(".pagination-next").on("click", function () {
   if (vocabPage < totalPages) {
     setPaginatedResults(vocabPage + 1);
   }
+});
+
+$("#incompleteOnly").on("click", function () {
+  setPaginatedResults(vocabPage);
 });

@@ -43,13 +43,20 @@
       <div>
         <h5>Consecutive correct answers needed to reach learning goal</h5>
         <div>
-          <div class="grid-x">
+          <div class="grid-x grid-padding-x">
             <input
               class="cell medium-6 large-4"
               type="text"
               id="searchVocab"
               placeholder="Search vocabulary"
             />
+            <div class="cell medium-6 large-4">
+              <input
+              type="checkbox"
+              id="incompleteOnly"
+              ><label for="incompleteOnly">Only show words in progress</label></input>
+            </div>
+            
           </div>
 
           <div class="vocabTable">
@@ -58,6 +65,7 @@
                 <tr>
                   <th width="100">Japanese</th>
                   <th width="150">English</th>
+                  <th width="100">Index</th>
                   <th width="100">Level</th>
                   <th width="100">Set</th>
                   <th>
